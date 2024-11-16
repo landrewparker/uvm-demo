@@ -1,0 +1,37 @@
+[option]
+copyright_year = "2024"
+copyright_holder = "Andrew Parker"
+
+[textrules]
+header_copyright = true
+
+[syntaxrules]
+blocking_assignment_in_always_ff = true
+non_blocking_assignment_in_always_comb = true
+enum_with_type = true
+keyword_forbidden_priority = true
+keyword_forbidden_unique = true
+keyword_forbidden_unique0 = true
+procedural_continuous_assignment = true
+action_block_with_side_effect = true
+default_nettype_none = true
+function_same_as_system_function = true
+keyword_forbidden_wire_reg = true
+module_nonansi_forbidden = true
+localparam_type_twostate = true
+parameter_type_twostate = true
+localparam_explicit_type = true
+parameter_explicit_type = true
+parameter_default_value = true
+parameter_in_generate = true
+parameter_in_package = true
+genvar_declaration_in_loop = true
+genvar_declaration_out_loop = false
+keyword_forbidden_generate = true
+keyword_required_generate = false
+multiline_for_begin = true
+multiline_if_begin = true
+inout_with_tri = true
+input_with_var = true
+output_with_var = true
+interface_port_with_modport = true
