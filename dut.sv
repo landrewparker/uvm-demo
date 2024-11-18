@@ -1,11 +1,5 @@
 // Copyright (c) 2024 Andrew Parker
 
-typedef enum logic [1:0] {
-  NOP = 2'b00,
-  RD  = 2'b01,
-  WR  = 2'b10
-} reg_op_t;
-
 module dut #(int DWIDTH=8, int AWIDTH=8)
    (input logic               clk,
     input logic               rst,
@@ -21,13 +15,13 @@ module dut #(int DWIDTH=8, int AWIDTH=8)
       if (rst) begin
          reg_rdata <= 0;
       end else begin
-         if (reg_op == RD) begin
+         if (reg_op == reg_if.RD) begin
             case (reg_addr)
               'h00: reg_rdata <= reg0;
               'h01: reg_rdata <= reg1;
             endcase
          end
-         else if (reg_op == WR) begin
+         else if (reg_op == reg_if.WR) begin
             case (reg_addr)
               'h00: reg0 <= reg_wdata;
               'h01: reg1 <= reg_wdata;
