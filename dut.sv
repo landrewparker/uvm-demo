@@ -1,18 +1,38 @@
 // Copyright (c) 2024 Andrew Parker
 
-`default_nettype none
+typedef enum logic [1:0] {
+  NOP = 2'b00,
+  RD  = 2'b01,
+  WR  = 2'b10
+} reg_op_t;
 
-module dut #(DWIDTH=8)
+module dut #(int DWIDTH=8, int AWIDTH=8)
    (input logic               clk,
     input logic               rst,
-    input logic [DWIDTH-1:0]  din,
-    output logic [DWIDTH-1:0] dout);
+    input logic [1:0]         reg_op,
+    input logic [AWIDTH-1:0]  reg_addr,
+    input logic [DWIDTH-1:0]  reg_wdata,
+    output logic [DWIDTH-1:0] reg_rdata);
+
+   logic [DWIDTH-1:0] reg0;
+   logic [DWIDTH-1:0] reg1;
 
    always_ff @(posedge clk) begin
       if (rst) begin
-         dout <= 0;
+         reg_rdata <= 0;
       end else begin
-         dout <= din;
+         if (reg_op == RD) begin
+            case (reg_addr)
+              'h00: reg_rdata <= reg0;
+              'h01: reg_rdata <= reg1;
+            endcase
+         end
+         else if (reg_op == WR) begin
+            case (reg_addr)
+              'h00: reg0 <= reg_wdata;
+              'h01: reg1 <= reg_wdata;
+            endcase
+         end
       end
    end
 endmodule: dut

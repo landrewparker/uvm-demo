@@ -31,7 +31,4 @@ keyword_forbidden_generate = true
 keyword_required_generate = false
 multiline_for_begin = true
 multiline_if_begin = true
-inout_with_tri = true
-input_with_var = true
-output_with_var = true
 interface_port_with_modport = true
