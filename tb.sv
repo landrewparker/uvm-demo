@@ -41,8 +41,8 @@ module tb;
    // Configure and run test
    initial begin
       // Put virtual interface handles in config DB
-      uvm_config_db #(virtual reg_if #(8,8).req)::set(uvm_root::get(), "*.reg_agent0.driver", "vif", reg_if0);
-      uvm_config_db #(virtual reg_if #(8,8).mon)::set(uvm_root::get(), "*.reg_agent0.monitor", "vif", reg_if0);
+      uvm_config_db #(virtual reg_if #(8,8).req)::set(null, "uvm_test_top.env0.reg_agent0.driver", "vif", reg_if0);
+      uvm_config_db #(virtual reg_if #(8,8).mon)::set(null, "uvm_test_top.env0.reg_agent0.monitor", "vif", reg_if0);
       // Run UVM test
       run_test();
    end
