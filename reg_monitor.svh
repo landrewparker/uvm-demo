@@ -71,7 +71,7 @@ class reg_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
            do_check();
          if (cover_en)
            do_cover();
-         `uvm_info("MON", item.sprint(), UVM_MEDIUM)
+         `uvm_info("MON", item.sprint(uvm_line_printer::get_default()), UVM_MEDIUM)
 
          // Copy-on-write policy
          assert($cast(item_clone, item.clone())) else
