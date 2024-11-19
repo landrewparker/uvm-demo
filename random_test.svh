@@ -14,6 +14,12 @@ class random_test extends uvm_test;
       env0 = env::type_id::create("env0", this);
    endfunction
 
+   function void end_of_elaboration_phase(uvm_phase phase);
+      super.end_of_elaboration_phase(phase);
+      // Print the component hierarchy
+      this.print();
+   endfunction
+
    task main_phase(uvm_phase phase);
       reg_random_seq seq;
       phase.raise_objection(this, "random_test");
