@@ -13,7 +13,9 @@ class reg_agent #(AWIDTH=8, DWIDTH=8) extends uvm_agent;
    uvm_active_passive_enum is_active;
 
    // UVM component utils
-   `uvm_component_param_utils(this_t)
+   `uvm_component_param_utils_begin(this_t)
+      `uvm_field_enum(uvm_active_passive_enum, is_active, UVM_DEFAULT)
+   `uvm_component_utils_end
 
    // Monitor, driver, and sequencer
    monitor_t monitor;
@@ -30,10 +32,6 @@ class reg_agent #(AWIDTH=8, DWIDTH=8) extends uvm_agent;
    //
    function void build_phase(uvm_phase phase);
       super.build_phase(phase);
-
-      // Get config (TODO: auto configure)
-      assert(uvm_config_db #(uvm_active_passive_enum)::get(this, "", "is_active", is_active))
-        else `uvm_fatal("CFGERR", "is_active not configured")
 
       // Create monitor
       monitor = monitor_t::type_id::create("monitor", this);
