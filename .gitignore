@@ -1,1 +1,7 @@
 *~
+/csrc/
+/simv
+/simv.daidir/
+/simv.vdb/
+/ucli.key
+/vc_hdrs.h

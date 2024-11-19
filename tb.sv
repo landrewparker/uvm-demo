@@ -2,6 +2,8 @@
 
 module tb;
 
+   import uvm_pkg::*;
+
    logic clk;
    logic rst;
 
@@ -19,7 +21,7 @@ module tb;
 
    // Clock driver
    initial begin
-      repeat (10) begin
+      forever begin
          clk = 0;
          #10;
          clk = 1;
@@ -35,4 +37,14 @@ module tb;
       #20;
       rst = 0;
    end
+
+   // Configure and run test
+   initial begin
+      // Put virtual interface handles in config DB
+      uvm_config_db #(virtual reg_if #(8,8).req)::set(uvm_root::get(), "*.reg_agent0.driver", "vif", reg_if0);
+      uvm_config_db #(virtual reg_if #(8,8).mon)::set(uvm_root::get(), "*.reg_agent0.monitor", "vif", reg_if0);
+      // Run UVM test
+      run_test();
+   end
+
 endmodule: tb

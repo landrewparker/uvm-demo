@@ -13,8 +13,8 @@ interface reg_if #(int DWIDTH=8, int AWIDTH=8) (input logic clk, input logic rst
    logic [DWIDTH-1:0] wdata;
    logic [DWIDTH-1:0] rdata;
 
-   modport req (output op, output addr, output wdata, input rdata);
-   modport rsp (input op, input addr, input wdata, output rdata);
-   modport mon (input op, input addr, input wdata, input rdata);
+   modport req (input clk, input rst, output op, output addr, output wdata, input rdata);
+   modport rsp (input clk, input rst, input op, input addr, input wdata, output rdata);
+   modport mon (input clk, input rst, input op, input addr, input wdata, input rdata);
 
 endinterface: reg_if

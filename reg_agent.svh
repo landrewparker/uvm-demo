@@ -31,7 +31,7 @@ class reg_agent #(AWIDTH=8, DWIDTH=8) extends uvm_agent;
    function void build_phase(uvm_phase phase);
       super.build_phase(phase);
 
-      // Get config
+      // Get config (TODO: auto configure)
       assert(uvm_config_db #(uvm_active_passive_enum)::get(this, "", "is_active", is_active))
         else `uvm_fatal("CFGERR", "is_active not configured")
 

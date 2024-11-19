@@ -74,7 +74,7 @@ class reg_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
          `uvm_info("MON", item.sprint(), UVM_MEDIUM)
 
          // Copy-on-write policy
-         assert($cast(item_clone, m_item.clone())) else
+         assert($cast(item_clone, item.clone())) else
            `uvm_fatal("CSTERR", "cast failed");
          ap.write(item_clone);
       end
@@ -88,20 +88,20 @@ class reg_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
       do begin
          @(posedge vif.clk);
          item.delay++;
-      end while (vif.op == reg_if.NOP);
+      end while (vif.op == vif.NOP);
 
       // Recover reg item transaction
       item.addr = vif.addr;
-      if (vif.op == reg_if.RD) begin
+      if (vif.op == vif.RD) begin
          // TODO: Handle back-to-back reads
          item.op = item_t::READ;
          @(posedge vif.clk);
          item.data = vif.rdata;
-      end else if (vif.op == reg_if.WR) begin
+      end else if (vif.op == vif.WR) begin
          item.op = item_t::WRITE;
          item.data = vif.wdata;
       end else begin
-         `uvm_error("MON", $sformatf("unknown reg_if op: %h", vif.op))
+         `uvm_error("MON", $sformatf("unknown op: %h", vif.op))
       end
    endtask: collect_item
 
