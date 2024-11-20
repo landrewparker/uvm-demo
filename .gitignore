@@ -1,5 +1,9 @@
 *~
+/.dvt/build.config.xml
+/.dvt/default.build.auto.1
+/.dvt/default.ls
 /csrc/
+/dvt_build.log
 /simv
 /simv.daidir/
 /simv.vdb/
