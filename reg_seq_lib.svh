@@ -12,7 +12,7 @@ class reg_random_seq extends uvm_sequence #(reg_item);
       repeat (10) begin
          req = reg_item #(8,8)::type_id::create("req");
          start_item(req);
-         req.randomize();
+         if (!req.randomize()) `uvm_fatal("RNDERR", "Randomize failed")
          finish_item(req);
       end
    endtask

@@ -6,6 +6,7 @@ module tb;
    parameter int DWIDTH = 8;
 
    import uvm_pkg::*;
+   import test_pkg::*;
 
    logic clk;
    logic rst;

@@ -88,16 +88,16 @@ class reg_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
       do begin
          @(posedge vif.clk);
          item.delay++;
-      end while (vif.op == vif.NOP);
+      end while (vif.op == reg_if.NOP);
 
       // Recover reg item transaction
       item.addr = vif.addr;
-      if (vif.op == vif.RD) begin
+      if (vif.op == reg_if.RD) begin
          // TODO: Handle back-to-back reads
          item.op = item_t::READ;
          @(posedge vif.clk);
          item.data = vif.rdata;
-      end else if (vif.op == vif.WR) begin
+      end else if (vif.op == reg_if.WR) begin
          item.op = item_t::WRITE;
          item.data = vif.wdata;
       end else begin

@@ -13,18 +13,20 @@ module dut #(int DWIDTH=8, int AWIDTH=8)
 
    always_ff @(posedge clk) begin
       if (rst) begin
+         reg0 <= 0;
+         reg1 <= 0;
          reg_rdata <= 0;
       end else begin
          if (reg_op == reg_if.RD) begin
             case (reg_addr)
-              'h00: reg_rdata <= reg0;
-              'h01: reg_rdata <= reg1;
+              8'h00: reg_rdata <= reg0;
+              8'h01: reg_rdata <= reg1;
             endcase
          end
          else if (reg_op == reg_if.WR) begin
             case (reg_addr)
-              'h00: reg0 <= reg_wdata;
-              'h01: reg1 <= reg_wdata;
+              8'h00: reg0 <= reg_wdata;
+              8'h01: reg1 <= reg_wdata;
             endcase
          end
       end
