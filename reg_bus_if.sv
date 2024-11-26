@@ -1,6 +1,6 @@
 // Copyright (c) 2024 Andrew Parker
 
-interface reg_if #(int DWIDTH=8, int AWIDTH=8) (input logic clk, input logic rst);
+interface reg_bus_if #(int DWIDTH=8, int AWIDTH=8) (input logic clk, input logic rst);
 
    typedef enum logic [1:0] {
      NOP = 2'b00,
@@ -17,4 +17,4 @@ interface reg_if #(int DWIDTH=8, int AWIDTH=8) (input logic clk, input logic rst
    modport rsp (input clk, input rst, input op, input addr, input wdata, output rdata);
    modport mon (input clk, input rst, input op, input addr, input wdata, input rdata);
 
-endinterface: reg_if
+endinterface: reg_bus_if

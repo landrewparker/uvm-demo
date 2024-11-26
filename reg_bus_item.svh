@@ -1,11 +1,11 @@
 // Copyright (c) 2024 Andrew Parker
 
-// Class: reg_item
+// Class: reg_bus_item
 //
-class reg_item #(AWIDTH=8, DWIDTH=8) extends uvm_sequence_item;
+class reg_bus_item #(AWIDTH=8, DWIDTH=8) extends uvm_sequence_item;
 
    // Types
-   typedef reg_item #(AWIDTH, DWIDTH) this_t;
+   typedef reg_bus_item #(AWIDTH, DWIDTH) this_t;
    typedef enum {READ, WRITE} op_t;
 
    // Random variables
@@ -29,8 +29,8 @@ class reg_item #(AWIDTH=8, DWIDTH=8) extends uvm_sequence_item;
 
    // Function: new
    //
-   function new(string name = "reg_item");
+   function new(string name = "reg_bus_item");
       super.new(name);
    endfunction
 
-endclass: reg_item
+endclass: reg_bus_item

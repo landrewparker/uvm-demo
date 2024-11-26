@@ -1,12 +1,12 @@
 // Copyright (c) 2024 Andrew Parker
 
-class reg_agent #(AWIDTH=8, DWIDTH=8) extends uvm_agent;
+class reg_bus_agent #(AWIDTH=8, DWIDTH=8) extends uvm_agent;
 
    // Types
-   typedef reg_agent #(AWIDTH, DWIDTH) this_t;
-   typedef reg_item #(AWIDTH, DWIDTH) item_t;
-   typedef reg_monitor #(AWIDTH, DWIDTH) monitor_t;
-   typedef reg_driver #(AWIDTH, DWIDTH) driver_t;
+   typedef reg_bus_agent #(AWIDTH, DWIDTH) this_t;
+   typedef reg_bus_item #(AWIDTH, DWIDTH) item_t;
+   typedef reg_bus_monitor #(AWIDTH, DWIDTH) monitor_t;
+   typedef reg_bus_driver #(AWIDTH, DWIDTH) driver_t;
    typedef uvm_sequencer #(item_t) sequencer_t;
 
    // Config
@@ -54,4 +54,4 @@ class reg_agent #(AWIDTH=8, DWIDTH=8) extends uvm_agent;
       end
    endfunction: connect_phase
 
-endclass: reg_agent
+endclass: reg_bus_agent

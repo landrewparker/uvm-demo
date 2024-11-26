@@ -17,13 +17,13 @@ module dut #(int DWIDTH=8, int AWIDTH=8)
          reg1 <= 0;
          reg_rdata <= 0;
       end else begin
-         if (reg_op == reg_if.RD) begin
+         if (reg_op == reg_bus_if.RD) begin
             case (reg_addr)
               8'h00: reg_rdata <= reg0;
               8'h01: reg_rdata <= reg1;
             endcase
          end
-         else if (reg_op == reg_if.WR) begin
+         else if (reg_op == reg_bus_if.WR) begin
             case (reg_addr)
               8'h00: reg0 <= reg_wdata;
               8'h01: reg1 <= reg_wdata;

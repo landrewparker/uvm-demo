@@ -1,11 +1,11 @@
 // Copyright (c) 2024 Andrew Parker
 
-class reg_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
+class reg_bus_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
 
    // Types
-   typedef reg_monitor #(AWIDTH, DWIDTH) this_t;
-   typedef reg_item #(AWIDTH, DWIDTH) item_t;
-   typedef virtual reg_if #(AWIDTH, DWIDTH).mon vif_t;
+   typedef reg_bus_monitor #(AWIDTH, DWIDTH) this_t;
+   typedef reg_bus_item #(AWIDTH, DWIDTH) item_t;
+   typedef virtual reg_bus_if #(AWIDTH, DWIDTH).mon vif_t;
 
    // Config
    bit check_en = 1;
@@ -116,4 +116,4 @@ class reg_monitor #(AWIDTH=8, DWIDTH=8) extends uvm_monitor;
       item_cg.sample();
    endfunction: do_cover
 
-endclass: reg_monitor
+endclass: reg_bus_monitor

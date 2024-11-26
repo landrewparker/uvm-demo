@@ -1,11 +1,11 @@
 // Copyright (c) 2024 Andrew Parker
 
-class reg_driver #(AWIDTH=8, DWIDTH=8) extends uvm_driver #(reg_item #(AWIDTH, DWIDTH));
+class reg_bus_driver #(AWIDTH=8, DWIDTH=8) extends uvm_driver #(reg_bus_item #(AWIDTH, DWIDTH));
 
    // Types
-   typedef reg_driver #(AWIDTH, DWIDTH) this_t;
-   typedef reg_item #(AWIDTH, DWIDTH) item_t;
-   typedef virtual reg_if #(AWIDTH, DWIDTH).req vif_t;
+   typedef reg_bus_driver #(AWIDTH, DWIDTH) this_t;
+   typedef reg_bus_item #(AWIDTH, DWIDTH) item_t;
+   typedef virtual reg_bus_if #(AWIDTH, DWIDTH).req vif_t;
 
    // Config
    vif_t vif;
@@ -83,4 +83,4 @@ class reg_driver #(AWIDTH=8, DWIDTH=8) extends uvm_driver #(reg_item #(AWIDTH, D
       end
    endtask: drive_item
 
-endclass: reg_driver
+endclass: reg_bus_driver
