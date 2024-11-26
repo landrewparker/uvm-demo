@@ -52,7 +52,7 @@ class reg_driver #(AWIDTH=8, DWIDTH=8) extends uvm_driver #(reg_item #(AWIDTH, D
 
    // Task: drive_reset
    virtual protected task drive_reset();
-      vif.op <= reg_if.NOP;
+      vif.op <= vif.NOP;
    endtask
 
    // Task: drive_item
@@ -63,17 +63,17 @@ class reg_driver #(AWIDTH=8, DWIDTH=8) extends uvm_driver #(reg_item #(AWIDTH, D
 
       // Drive item
       if (item.op == item_t::READ) begin
-         vif.op <= reg_if.RD;
+         vif.op <= vif.RD;
       end
       else begin
-         vif.op <= reg_if.WR;
+         vif.op <= vif.WR;
          vif.wdata <= item.data;
       end
       vif.addr <= item.addr;
 
       // Wait for item to be sampled by DUT
       @(posedge vif.clk);
-      vif.op <= reg_if.NOP;
+      vif.op <= vif.NOP;
 
       // Collect read data
       if (item.op == item_t::READ) begin

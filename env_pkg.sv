@@ -6,11 +6,11 @@ package env_pkg;
 `include "uvm_macros.svh"
 
    // Reg agent
-`include "reg_item.svh"
-`include "reg_monitor.svh"
-`include "reg_driver.svh"
-`include "reg_agent.svh"
-`include "reg_seq_lib.svh"
+`include "reg_bus_item.svh"
+`include "reg_bus_monitor.svh"
+`include "reg_bus_driver.svh"
+`include "reg_bus_agent.svh"
+`include "reg_bus_seq_lib.svh"
 
    // Env
 `include "env.svh"
