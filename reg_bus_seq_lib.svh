@@ -12,7 +12,8 @@ class reg_bus_random_seq extends uvm_sequence #(reg_bus_item);
       repeat (10) begin
          req = reg_bus_item #(8,8)::type_id::create("req");
          start_item(req);
-         if (!req.randomize()) `uvm_fatal("RNDERR", "Randomize failed")
+         if (!req.randomize() with {addr inside {'h00, 'h01};})
+           `uvm_fatal("RNDERR", "Randomize failed")
          finish_item(req);
       end
    endtask
