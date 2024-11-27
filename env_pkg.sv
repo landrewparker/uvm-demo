@@ -14,6 +14,7 @@ package env_pkg;
 
    // Register model
 `include "reg_model.svh"
+`include "reg_adapter.svh"
 
    // Env
 `include "env.svh"
