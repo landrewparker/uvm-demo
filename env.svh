@@ -12,6 +12,9 @@ class env extends uvm_env;
    // Agents
    reg_bus_agent_t reg_bus_agent0;
 
+   // Register model
+   reg_block reg_model0;
+
    // Function: new
    //
    function new(string name, uvm_component parent);
@@ -28,6 +31,11 @@ class env extends uvm_env;
 
       // Configure agents
       uvm_config_db #(uvm_active_passive_enum)::set(this, "reg_bus_agent0", "is_active",  UVM_ACTIVE);
+
+      // Create register model
+      reg_model0 = reg_block::type_id::create("reg_model0", this);
+      reg_model0.build();
+
    endfunction // build_phase
 
 endclass: env
