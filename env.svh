@@ -51,7 +51,7 @@ class env extends uvm_env;
 
       // Connect register model to bus agent, adapter, and predictor
       reg_model0.default_map.set_sequencer(reg_bus_agent0.sequencer, reg_adapter0);
-      reg_model0.default_map.set_check_on_read();
+      reg_model0.default_map.set_check_on_read(); // Not enabled by default
       reg_predictor.adapter = reg_adapter0;
       reg_predictor.map = reg_model0.default_map;
       reg_bus_agent0.monitor.ap.connect(reg_predictor.bus_in);
